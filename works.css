@@ -135,3 +135,8 @@ h2 {
   width: 100%;
   top: -10vh;
 }
+
+      .footerlink{
+    height: 5vh !important;
+    margin: 3vh !important;
+  }
