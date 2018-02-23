@@ -1,0 +1,45 @@
+@font-face{
+		font-family: "Astra";
+		src: url("./assets/fonts/elzevir/elzevir.ttf");
+	}
+
+	h1{
+		font-family: "Astra";
+	}
+
+	.text, #story{
+		font-family: "Calibri";
+		font-size: 1.5em;
+		padding: 0;
+
+	}
+	.h4-tag{
+		font-family: "Calibri";
+		font-size: 1.7em;
+		padding: 0;
+	}
+	.navbar-inverse .navbar-nav > li > a{
+		font-family: "Calibri";
+		font-size: 1.2em;
+	}
+	.col-lg-4{
+		font-family: "Calibri";
+	}
+	.profit{
+		margin-bottom: 3vh;
+	}
+	.profit img{
+		height: 12vh;
+		margin: 1vh;
+	}
+	.under{
+		height: 12vh;
+	}
+
+	h4{
+		margin-bottom: 10vh;
+	}
+	.footerlink{
+		height: 5vh;
+		margin: 3vh;
+	}
