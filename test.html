@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+    <title>SPOT - Free Bootstrap 3 Theme</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+
+    <style>
+
+*, *:after, *:before { 
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box; 
+          box-sizing: border-box;
+}
+body, html {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+}
+.clearfix:before, .clearfix:after { content: " "; display: table; }
+.clearfix:after { clear: both; }
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #6b7381;
+  background: #f2f2f2;
+}
+a {
+  color: #aaa;
+  text-decoration: none;
+}
+a:hover,a:active {color: #333;}
+h2 {
+  color: #4E88AE;
+  font-weight: 400;
+  text-align: center;
+}
+img {
+  border: 0;
+  display: block;
+  width: 100%;
+}
+.entry {
+  background: #FFF;
+  border: 1px solid rgba(0,0,0,.15);
+  box-shadow: -10px 10px 10px -10px rgba(0,0,0,.35), -10px 10px 0 -3px rgba(0,0,0,.2);
+  margin: 10px auto 20px;
+  max-width: 800px;
+  overflow: hidden;
+  padding: 20px 40px;
+  position: relative;
+  text-align: center;
+}
+.entry > p {
+  padding: 20px 0 10px;
+}
+.entry > .grid {
+  margin: 20px auto 0px;
+}
+.entry > .grid > .item {
+  width: 50%;
+}
+.grid {
+  max-width: 69em;
+  list-style: none;
+  margin: 30px auto;
+  padding: 1;
+}
+.grid .item {
+  display: block;
+  float: left;
+  padding: 2px;
+  width: 33%;
+  opacity: 1;
+}
+.grid .item a,.grid .item img {
+  outline: none;
+  border: none;
+  display: block;
+  max-width: 100%;
+}
+.grid.effect-2 .item.animate {
+  -webkit-transform: translateY(200px);
+  transform: translateY(200px);
+  -webkit-animation: moveUp 0.65s ease forwards;
+  animation: moveUp 0.65s ease forwards;
+}
+
+@-webkit-keyframes moveUp {
+  0% { }
+  100% { -webkit-transform: translateY(0); opacity: 1; }
+}
+
+@keyframes moveUp {
+  0% { }
+  100% { -webkit-transform: translateY(0); transform: translateY(0); opacity: 1; }
+}
+@media screen and (max-width: 900px) {
+  .grid .item {width: 50%;}
+  .entry {box-shadow: none;}
+  .entry > .grid > .item {width: 50%;}
+}
+
+@media screen and (max-width: 400px) {
+  .grid .item {width: 100%;}
+  .entry {padding: 20px 0;}
+  .entry > p {padding: 10px;}
+  .entry > .grid > .item {width: 100%;}
+}
+
+
+
+
+
+
+
+/* Базовые стили слоя затемнения и модального окна  */
+.overlay {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    display: none;
+/* фон затемнения */
+    background-color: rgba(0, 0, 0, 0.65);
+    position: fixed; /* фиксированное поцизионирование */
+    cursor: default; /* тип курсара */
+}
+/* активируем слой затемнения */
+.overlay:target {
+    display: block;
+}
+/* стили модального окна */
+.popup {
+    top: -100%;
+    right: 0;
+    left: 50%;
+    font-size: 14px;
+    z-index: 20;
+    margin: 0;
+    width: 85%;
+    min-width: 320px;
+    max-width: 600px;
+/* фиксированное позиционирование, окно стабильно при прокрутке */
+    position: fixed;
+    padding: 15px;
+    border: 1px solid #383838;
+    background: #fefefe;
+/* скругление углов */
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    font: 14px/18px 'Tahoma', Arial, sans-serif;
+/* внешняя тень */
+    -webkit-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    -ms-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    -webkit-transform: translate(-50%, -500%);
+    -ms-transform: translate(-50%, -500%);
+    -o-transform: translate(-50%, -500%);
+    transform: translate(-50%, -500%);
+    -webkit-transition: -webkit-transform 0.6s ease-out;
+    -moz-transition: -moz-transform 0.6s ease-out;
+    -o-transition: -o-transform 0.6s ease-out;
+    transition: transform 0.6s ease-out;
+}
+/* активируем модальный блок */
+.overlay:target+.popup {
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    top: 20%;
+}
+/* формируем кнопку закрытия */
+.close {
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    padding: 0;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-radius: 15px;
+    background-color: rgba(61, 61, 61, 0.8);
+    -webkit-box-shadow: 0px 0px 10px #000;
+    -moz-box-shadow: 0px 0px 10px #000;
+    box-shadow: 0px 0px 10px #000;
+    text-align: center;
+    text-decoration: none;
+    font: 13px/20px 'Tahoma', Arial, sans-serif;
+    font-weight: bold;
+    -webkit-transition: all ease .8s;
+    -moz-transition: all ease .8s;
+    -ms-transition: all ease .8s;
+    -o-transition: all ease .8s;
+    transition: all ease .8s;
+}
+.close:before {
+    color: rgba(255, 255, 255, 0.9);
+    content: "X";
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+    font-size: 12px;
+}
+.close:hover {
+    background-color: rgba(252, 20, 0, 0.8);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);    
+}
+/* изображения внутри окна */
+.popup img {
+    width: 100%;
+    height: auto;
+}
+/* миниатюры слева/справа */
+.pic-left, 
+.pic-right {
+    width: 25%;
+    height: auto;
+}
+.pic-left {
+    float: left;
+    margin: 5px 15px 5px 0;
+}
+.pic-right {
+    float: right;
+    margin: 5px 0 5px 15px;
+}
+/* элементы м-медиа, фреймы */
+.popup embed, 
+.popup iframe {
+    top: 0;
+    right: 0;
+    bottom: 0; 
+    left: 0; 
+    display:block;
+    margin: auto;
+    min-width: 320px;
+    max-width: 600px;
+    width: 100%;
+}
+.popup h2 { /* заголовок 2 */
+    margin: 0;
+    color: #008000;
+    padding: 5px 0px 10px;
+    text-align: left;
+    text-shadow: 1px 1px 3px #adadad;
+    font-weight: 500;
+    font-size: 1.4em;
+    font-family: 'Tahoma', Arial, sans-serif;
+    line-height: 1.3;
+}
+/* параграфы */
+.popup p {margin: 0; padding: 5px 0}
+
+
+.popup {
+  position: absolute;
+  height:100%;
+  width:100%;
+  top:0;
+  left:0;
+  display:none;
+  text-align:center;
+}
+
+.popup_bg {
+  background:rgba(0,0,0,0.4);
+  position:absolute;
+  z-index:1;
+  height:100%;
+  width:100%;
+}
+
+
+.popup_img {
+  position: relative;
+  margin:0 auto;
+  z-index:2;
+  max-height:94%;
+  max-width:94%;
+  margin:1% 0 0 0;
+}
+
+</style>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">SP<i class="fa fa-circle"></i>T</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li class="active"><a href="works.html">WORKS</a></li>
+            <li><a data-toggle="modal" data-target="#myModal" href="#myModal"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+  <div id="blue">
+    <div class="container">
+      <div class="row centered">
+        <div class="col-lg-8 col-lg-offset-2">
+        <h4>WE WORK HARD TO ACHIEVE EXCELLENCE</h4>
+        <p>AND WE ARE HAPPY TO DO IT</p>
+        </div>
+      </div><!-- row -->
+    </div><!-- container -->
+  </div><!--  bluewrap -->
+
+
+
+
+
+
+
+<h2>Masonry Gallery</h2>
+<div class="grid effect-2" id="grid">
+    <div class="item"><img  class="image" src="./img/1.JPG" alt="" /></div>
+    <div class="item"><img  class="image" src="./img/2.JPG" alt="" /></div>
+    <div class="item"><img  class="image" src="./img/3.JPG" alt="" /></div>
+    <div class="item"><img  class="image" src="./img/4.JPG" alt="" /></div>
+    <div class="item"><img  class="image" src="./img/5.JPG" alt="" /></div>
+    <div class="item"><img  class="image" src="./img/6.JPG" alt="" /></div>
+    <div class="item"><img  class="image" src="./img/7.JPG" alt="" /></div>
+    <div class="item"><img  class="image" src="./img/1.JPG" alt="" /></div>
+    <div class="item"><img  class="image" src="./img/2.JPG" alt="" /></div>
+    <div class="item"><img  class="image" src="./img/3.JPG" alt="" /></div>
+   
+</div>
+<div class="entry">
+<h2>Masonry Gallery Post</h2>
+<time>12:48</time>
+<p>Lorem ipsum ad his scripta blandit partiendo,  eum fastidii accumsan euripidis in,  eum liber hendrerit an.  Qui ut wisi vocibus suscipiantur,  quo dicit ridens inciderint id.  Quo mundi lobortis reformidans eu,  legimus senserit definiebas an eos.  Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per.  In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per.</p>
+<div class="grid" id="grid2">
+    <img src="https://goo.gl/NiXtS3" alt="" />
+    <img src="https://goo.gl/bybkCD" alt="" />
+    <img src="https://goo.gl/g5jr1N" alt="" />
+    <img src="https://goo.gl/Akx3Oh" alt="" />
+</div>
+<p>Lorem ipsum ad his scripta blandit partiendo,  eum fastidii accumsan euripidis in,  eum liber hendrerit an.  Qui ut wisi vocibus suscipiantur, ut fugit veritus placerat per.</p>
+<img src="https://goo.gl/Akx3Oh" alt="" />
+</div>
+
+
+
+<a href="#win4" class="button button-orange">Фото в окне 4</a>
+<!-- Модальное окно №4 -->
+<a href="#x" class="overlay" id="win4"></a>
+        <div class="popup">
+<img class="is-image" src="ваша-картинка.jpg" alt="" />
+        <a class="close" title="Закрыть" href="#close"></a>
+        </div>
+
+
+
+
+
+
+
+
+
+
+  <div class="container desc">
+    <div class="row">
+      <br><br>
+      <div class="col-lg-6 centered">
+        <img src="assets/img/p03.png" alt="">
+      </div><!-- col-lg-6 -->
+      <div class="col-lg-6">
+        <h4>CLIENT NAME</h4>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+        <p>
+          <i class="fa fa-circle-o"></i> Mobile Design<br/>
+          <i class="fa fa-circle-o"></i> Web Design<br/>
+          <i class="fa fa-circle-o"></i> Development<br/>
+          <i class="fa fa-link"></i> <a href="#">BlackTie.co</a>
+        </p>
+      </div>
+    </div><!-- row -->
+    
+    <br><br>
+    <hr>
+    <br><br>
+    <div class="row">
+      <div class="col-lg-6 centered">
+        <img src="assets/img/p01.png" alt="">
+      </div><!-- col-lg-6 -->
+      <div class="col-lg-6">
+        <h4>CLIENT NAME</h4>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+        <p>
+          <i class="fa fa-circle-o"></i> Mobile Design<br/>
+          <i class="fa fa-circle-o"></i> Web Design<br/>
+          <i class="fa fa-circle-o"></i> Development<br/>
+          <i class="fa fa-link"></i> <a href="#">BlackTie.co</a>
+        </p>
+      </div>
+    </div><!-- row -->
+
+    <br><br>
+    <hr>
+    <br><br>
+    <div class="row">
+      <div class="col-lg-6 centered">
+        <img src="assets/img/p02.png" alt="">
+      </div><!-- col-lg-6 -->
+      <div class="col-lg-6">
+        <h4>CLIENT NAME</h4>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+        <p>
+          <i class="fa fa-circle-o"></i> Mobile Design<br/>
+          <i class="fa fa-circle-o"></i> Web Design<br/>
+          <i class="fa fa-circle-o"></i> Development<br/>
+          <i class="fa fa-link"></i> <a href="#">BlackTie.co</a>
+        </p>
+      </div>
+    </div><!-- row -->
+    <br><br>
+  </div><!-- container -->
+
+  
+  <div id="r">
+    <div class="container">
+      <div class="row centered">
+        <div class="col-lg-8 col-lg-offset-2">
+          <h4>WE ARE STORYTELLERS. BRANDS ARE OUR SUBJECTS. DESIGN IS OUR VOICE.</h4>
+          <p>We believe ideas come from everyone, everywhere. At BlackTie, everyone within our agency walls is a designer in their own right. And there are a few principles we believe—and we believe everyone should believe—about our design craft. These truths drive us, motivate us, and ultimately help us redefine the power of design.</p>
+        </div>
+      </div><!-- row -->
+    </div><!-- container -->
+  </div><! -- r wrap -->
+  
+  
+  <!-- FOOTER -->
+  <div id="f">
+    <div class="container">
+      <div class="row centered">
+        <a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-dribbble"></i></a>
+    
+      </div><!-- row -->
+    </div><!-- container -->
+  </div><!-- Footer -->
+
+
+  <!-- MODAL FOR CONTACT -->
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">contact us</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row centered">
+              <p>We are available 24/7, so don't hesitate to contact us.</p>
+              <p>
+                Somestreet Ave, 987<br/>
+            London, UK.<br/>
+            +44 8948-4343<br/>
+            hi@blacktie.co
+              </p>
+              <div id="mapwrap">
+    <iframe height="300" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.es/maps?t=m&amp;ie=UTF8&amp;ll=52.752693,22.791016&amp;spn=67.34552,156.972656&amp;z=2&amp;output=embed"></iframe>
+          </div>  
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Save & Go</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+    <script src="https://cdn.jsdelivr.net/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+<script>
+
+$('#grid2 img').each(function(){
+    var $this = $(this); 
+    $this.wrap('<div class="item"><a></a></div>');
+
+});
+$('#grid2').addClass('effect-2');
+
+$(window).load(function(){
+  var $container = $('.grid');
+  // initialize
+  $container.masonry({
+    //columnWidth: 200,
+    itemSelector: '.item'
+  })
+
+})
+
+
+
+
+</script>
+
+<script>
+  
+  $(document).ready(function() { // Ждём загрузки страницы
+  
+  $(".image").click(function(){ // Событие клика на маленькое изображение
+      var img = $(this);  // Получаем изображение, на которое кликнули
+    var src = img.attr('src'); // Достаем из этого изображения путь до картинки
+    $("body").append("<div class='popup'>"+ //Добавляем в тело документа разметку всплывающего окна
+             "<div class='popup_bg'></div>"+ // Блок, который будет служить фоном затемненным
+             "<img src='"+src+"' class='popup_img' />"+ // Само увеличенное фото
+             "</div>"); 
+    $(".popup").fadeIn(800); // Медленно выводим изображение
+    $(".popup_bg").click(function(){  // Событие клика на затемненный фон    
+      $(".popup").fadeOut(800); // Медленно убираем всплывающее окно
+      setTimeout(function() { // Выставляем таймер
+        $(".popup").remove(); // Удаляем разметку всплывающего окна
+      }, 800);
+    });
+  });
+  
+});
+</script>
+  </body>
+</html>
