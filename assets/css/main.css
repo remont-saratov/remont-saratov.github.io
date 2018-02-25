@@ -409,4 +409,7 @@ a:after {
     background: #ff7878;
 }
 
-
+.navbar-inverse .navbar-nav > li > a{
+    font-family: "Calibri";
+    font-size: 1.2em;
+}
