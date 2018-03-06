@@ -1,3 +1,3 @@
 User-agent: *
 Disallow: 
-Sitemap: http://ремонт-саратов64.рф/sitemap.xml
+Sitemap: http://xn---64-6cdamr0djjeqgmnf.xn--p1ai/sitemap.xml/sitemap.xml
