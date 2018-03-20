@@ -413,3 +413,27 @@ a:after {
     font-family: "Calibri";
     font-size: 1.2em;
 }
+
+
+.footerlink{
+    height: 6vh !important;
+    margin: 3vh !important;
+  }
+
+footer p{
+  text-align: center;
+}
+footer ul{
+  padding-left: 0;
+}
+
+li{
+  list-style-type: none;
+  text-align: center;
+}
+
+footer p, li, a{
+  color: whitesmoke;
+  font-family: "Calibri";
+  font-size: 1.0em;
+}

@@ -12,9 +12,9 @@ body, html {
 .clearfix:before, .clearfix:after { content: " "; display: table; }
 .clearfix:after { clear: both; }
 
-.centered{
+/*.centered{
   padding-top: 10vh;
-}
+}*/
 body {
   font-family: 'Open Sans', sans-serif;
   color: #6b7381;
@@ -136,7 +136,4 @@ h2 {
   top: -10vh;
 }
 
-      .footerlink{
-    height: 5vh !important;
-    margin: 3vh !important;
-  }
+ 
