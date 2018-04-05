@@ -56,7 +56,7 @@ odnoklassniki_url: https://ok.ru/group/54122315382859
 
 # Google Analytics Tracking ID goes here:
 google_analytics:
-
+yandex_site_verification: d181d6fd790721fe
 # The following settings are NECESSARY for the Prologue theme to run:
 theme: minima
 collections: [sections, services]
