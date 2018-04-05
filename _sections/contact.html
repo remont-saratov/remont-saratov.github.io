@@ -1,0 +1,20 @@
+---
+title: Контакты
+icon: fa-envelope
+order: 4
+---
+
+<p>Вы можете связаться с нами по телефону +7(908)552 7105, связаться с нами в социальных сетях или написать нам на почту.</p>
+
+<form method="post" action="https://formspree.io/{{ site.email }}">
+  <div class="row">
+    <div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Имя" /></div>
+    <div class="6u$ 12u$(mobile)"><input type="text" name="email" placeholder="Почта" /></div>
+    <div class="12u$">
+      <textarea name="message" placeholder="Сообщение"></textarea>
+    </div>
+    <div class="12u$">
+      <input type="submit" value="Отправить" />
+    </div>
+  </div>
+</form>
