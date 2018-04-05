@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+Sitemap: http://xn---64-6cdamr0djjeqgmnf.xn--p1ai/sitemap.xml
+Host: http://xn---64-6cdamr0djjeqgmnf.xn--p1ai
