@@ -61,3 +61,4 @@ yandex_site_verification: d181d6fd790721fe
 theme: minima
 collections: [sections, services]
 encoding: utf-8
+tags: [keywords]
